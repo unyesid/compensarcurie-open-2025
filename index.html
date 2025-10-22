@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎾 CompensarCurie Open 2025</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2a2a 100%);
+            color: #ffffff;
+            padding: 20px 10px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(135deg, #2d6a4f 0%, #52b788 100%);
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .tournament-logo {
+            font-size: 5em;
+            margin-bottom: 10px;
+        }
+
+        .header h1 {
+            font-size: 2.2em;
+            font-weight: 800;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            letter-spacing: -0.5px;
+        }
+
+        .header .subtitle {
+            font-size: 1em;
+            font-weight: 600;
+            opacity: 0.95;
+            letter-spacing: 1px;
+        }
+
+        /* CONTENT AREA */
+        .content {
+            padding: 30px 20px;
+        }
+
+        /* PRIZE BOX */
+        .prize-box {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 24px rgba(255, 107, 53, 0.4);
+            font-weight: 700;
+            font-size: 1.1em;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 8px 24px rgba(255, 107, 53, 0.4); }
+            50% { box-shadow: 0 8px 32px rgba(255, 107, 53, 0.7); }
+        }
+
+        /* NEWS BUTTON */
+        .news-button {
+            background: linear-gradient(135deg, #52b788 0%, #2d6a4f 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 30px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            border: none;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(82, 183, 136, 0.3);
+        }
+
+        .news-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(82, 183, 136, 0.5);
+        }
+
+        /* SECTION HEADERS */
+        .section-title {
+            font-size: 1.6em;
+            font-weight: 700;
+            margin: 30px 0 20px 0;
+            padding-left: 15px;
+            border-left: 5px solid #52b788;
+            color: #ffffff;
+        }
+
+        .subsection-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin: 25px 0 15px 0;
+            color: #a0aec0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .subsection-title::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #52b788;
+            border-radius: 50%;
+        }
+
+        /* RULES LIST */
+        .rules-list {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .rules-list li {
+            margin: 12px 0;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .rules-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #52b788;
+            font-weight: bold;
+        }
+
+        /* GROUPS */
+        .groups-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .group-box {
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .group-box h3 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            color: #52b788;
+            font-weight: 700;
+        }
+
+        .group-box ul {
+            list-style: none;
+        }
+
+        .group-box li {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 12px 15px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border-left: 3px solid #ff6b35;
+            transition: all 0.3s ease;
+        }
+
+        .group-box li:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateX(5px);
+        }
+
+        /* TABLES */
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: 12px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        th {
+            background: rgba(82, 183, 136, 0.3);
+            padding: 15px 12px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid rgba(82, 183, 136, 0.5);
+        }
+
+        td {
+            padding: 15px 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        tbody tr {
+            transition: all 0.3s ease;
+        }
+
+        tbody tr:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .match-id {
+            font-weight: 700;
+            color: #52b788;
+            font-size: 0.9em;
+        }
+
+        .result-cell {
+            text-align: center;
+            min-width: 100px;
+        }
+
+        .result-input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            padding: 6px 10px;
+            text-align: center;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            width: 80px;
+        }
+
+        .qualified-row {
+            background: rgba(82, 183, 136, 0.15);
+            font-weight: 600;
+        }
+
+        .qualified-row td {
+            padding: 18px 12px;
+            border-top: 2px solid rgba(82, 183, 136, 0.5);
+        }
+
+        .qualified-placeholder {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            padding: 6px 20px;
+            min-width: 150px;
+            color: #a0aec0;
+        }
+
+        /* BRACKET */
+        .bracket-section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 25px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .bracket-match {
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 4px solid #52b788;
+            transition: all 0.3s ease;
+        }
+
+        .bracket-match:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .bracket-match strong {
+            display: block;
+            color: #52b788;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .bracket-match .match-details {
+            color: #e2e8f0;
+            line-height: 1.8;
+        }
+
+        .bracket-winner {
+            display: inline-block;
+            background: rgba(82, 183, 136, 0.2);
+            border: 2px dashed rgba(82, 183, 136, 0.5);
+            border-radius: 8px;
+            padding: 8px 25px;
+            min-width: 180px;
+            margin-top: 8px;
+            color: #cbd5e0;
+        }
+
+        .third-place {
+            border-left-color: #f6ad55;
+        }
+
+        .third-place strong {
+            color: #f6ad55;
+        }
+
+        .final-match {
+            border-left-color: #ff6b35;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(247, 147, 30, 0.1) 100%);
+        }
+
+        .final-match strong {
+            color: #ff6b35;
+            font-size: 1.3em;
+        }
+
+        /* NEWS SECTION */
+        .news-section {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid rgba(82, 183, 136, 0.3);
+        }
+
+        .news-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+
+        .news-header {
+            background: rgba(82, 183, 136, 0.1);
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .news-header:hover {
+            background: rgba(82, 183, 136, 0.15);
+        }
+
+        .news-title {
+            font-weight: 700;
+            font-size: 1em;
+            color: #52b788;
+        }
+
+        .news-toggle {
+            font-size: 1.2em;
+            color: #52b788;
+            transition: transform 0.3s ease;
+        }
+
+        .news-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .news-content.active {
+            max-height: 2000px;
+        }
+
+        .news-body {
+            padding: 20px;
+            line-height: 1.6;
+            color: #b0b0b0;
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #718096;
+            font-size: 0.9em;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.6em;
+            }
+            
+            .section-title {
+                font-size: 1.3em;
+            }
+            
+            table {
+                font-size: 0.85em;
+            }
+            
+            th, td {
+                padding: 10px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <div class="tournament-logo">🎾</div>
+                <h1>CompensarCurie Open 2025</h1>
+                <p class="subtitle">LEGENDS CUP TOURNAMENT</p>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="prize-box">
+                🏆 HABRÁ UN PREMIO ESPECIAL PARA EL CAMPEÓN (PREMIO POR DEFINIR) 🥇
+            </div>
+
+            <button class="news-button" onclick="document.getElementById('news-section').scrollIntoView({behavior: 'smooth'})">
+                📰 Ver Resultados y Noticias ⬇️
+            </button>
+
+            <div class="section-title">📜 Reglas del Torneo</div>
+            <ul class="rules-list">
+                <li><strong>Formato de Set:</strong> Short Set a 8 games</li>
+                <li><strong>Tie-Break:</strong> Se juega si el marcador llega a 7-7</li>
+                <li><strong>Juego (40-40):</strong> Puntuación tradicional de Ventaja (se requieren dos puntos consecutivos)</li>
+            </ul>
+
+            <div class="section-title">👥 Integrantes por Grupo</div>
+            <div class="groups-container">
+                <div class="group-box">
+                    <h3>Grupo A (4 Jugadores)</h3>
+                    <ul>
+                        <li>María Paula Navratilova</li>
+                        <li>Edwin Federer</li>
+                        <li>John McEnroe</li>
+                        <li>Yesid Djokovic</li>
+                    </ul>
+                </div>
+                <div class="group-box">
+                    <h3>Grupo B (3 Jugadores)</h3>
+                    <ul>
+                        <li>Lucho Sampras</li>
+                        <li>Oscar Nadal</li>
+                        <li>Hildebrando Borg</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section-title">1️⃣ Fase de Grupos (Round Robin)</div>
+            <p style="color: #a0aec0; margin-bottom: 20px;">Todos juegan contra todos dentro de su grupo. Avanzan los dos mejores de cada grupo.</p>
+
+            <div class="subsection-title">Grupo A - Fixture</div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 60px;">Partido</th>
+                            <th>Jugador 1</th>
+                            <th>Jugador 2</th>
+                            <th style="width: 120px; text-align: center;">Resultado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="match-id">A1</td>
+                            <td>María Paula Navratilova</td>
+                            <td>Edwin Federer</td>
+                            <td class="result-cell"><input type="text" class="result-input" value="0-8"></td>
+                        </tr>
+                        <tr>
+                            <td class="match-id">A2</td>
+                            <td>John McEnroe</td>
+                            <td>Yesid Djokovic</td>
+                            <td class="result-cell"><input type="text" class="result-input" value="3-8"></td>
+                        </tr>
+                        <tr>
+                            <td class="match-id">A3</td>
+                            <td>María Paula Navratilova</td>
+                            <td>John McEnroe</td>
+                            <td class="result-cell"><input type="text" class="result-input" placeholder="0-0"></td>
+                        </tr>
+                        <tr>
+                            <td class="match-id">A4</td>
+                            <td>Edwin Federer</td>
+                            <td>Yesid Djokovic</td>
+                            <td class="result-cell"><input type="text" class="result-input" value="2-1" placeholder="Suspendido"></td>
+                        </tr>
+                        <tr>
+                            <td class="match-id">A5</td>
+                            <td>María Paula Navratilova</td>
+                            <td>Yesid Djokovic</td>
+                            <td class="result-cell"><input type="text" class="result-input" placeholder="0-0"></td>
+                        </tr>
+                        <tr>
+                            <td class="match-id">A6</td>
+                            <td>Edwin Federer</td>
+                            <td>John McEnroe</td>
+                            <td class="result-cell"><input type="text" class="result-input" placeholder="0-0"></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr class="qualified-row">
+                            <td colspan="4">
+                                <strong>Clasificados:</strong> 
+                                1º A: <span class="qualified-placeholder">Por definir</span> | 
+                                2º A: <span class="qualified-placeholder">Por definir</span>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <div class="subsection-title">Grupo B - Fixture ✅ COMPLETO</div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 60px;">Partido</th>
+                            <th>Jugador 1</th>
+                            <th>Jugador 2</th>
+                            <th style="width: 120px; text-align: center;">Resultado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="match-id">B1</td>
+                            <td>Lucho Sampras</td>
+                            <td>Oscar Nadal</td>
+                            <td class="result-cell"><input type="text" class="result-input" value="1-8"></td>
+                        </tr>
+                        <tr>
+                            <td class="match-id">B2</td>
+                            <td>Oscar Nadal</td>
+                            <td>Hildebrando Borg</td>
+                            <td class="result-cell"><input type="text" class="result-input" value="6-8"></td>
+                        </tr>
+                        <tr>
+                            <td class="match-id">B3</td>
+                            <td>Lucho Sampras</td>
+                            <td>Hildebrando Borg</td>
+                            <td class="result-cell"><input type="text" class="result-input" value="8-4"></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr class="qualified-row">
+                            <td colspan="4">
+                                <strong>✅ Clasificados:</strong> 
+                                1º B: <span class="qualified-placeholder" style="background: rgba(82, 183, 136, 0.3); border-color: #52b788;">Oscar Nadal</span> | 
+                                2º B: <span class="qualified-placeholder" style="background: rgba(82, 183, 136, 0.3); border-color: #52b788;">Hildebrando Borg</span>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <div class="section-title">2️⃣ Criterios de Avance</div>
+            <p style="color: #a0aec0; margin-bottom: 20px;">Los 4 clasificados se ordenarán por: 1) Partidos ganados, 2) Resultado directo, y 3) Diferencia de games.</p>
+
+            <div class="section-title">3️⃣ Fase Final (Knockout)</div>
+            <p style="color: #a0aec0; margin-bottom: 20px;">El líder de un grupo se enfrenta al segundo del otro.</p>
+
+            <div class="bracket-section">
+                <div class="subsection-title">Semi-Finales</div>
+                
+                <div class="bracket-match">
+                    <strong>SF1</strong>
+                    <div class="match-details">
+                        1º Lugar Grupo A vs. 2º Lugar Grupo B (Hildebrando Borg)<br>
+                        <strong style="color: #a0aec0; font-size: 0.95em;">Ganador SF1:</strong> <span class="bracket-winner">Por definir</span>
+                    </div>
+                </div>
+
+                <div class="bracket-match">
+                    <strong>SF2</strong>
+                    <div class="match-details">
+                        1º Lugar Grupo B (Oscar Nadal) vs. 2º Lugar Grupo A<br>
+                        <strong style="color: #a0aec0; font-size: 0.95em;">Ganador SF2:</strong> <span class="bracket-winner">Por definir</span>
+                    </div>
+                </div>
+
+                <div class="subsection-title">Finales</div>
+
+                <div class="bracket-match third-place">
+                    <strong>🥉 Partido por el 3er Lugar</strong>
+                    <div class="match-details">
+                        Perdedor SF1 vs. Perdedor SF2<br>
+                        <strong style="color: #a0aec0; font-size: 0.95em;">Tercer Lugar:</strong> <span class="bracket-winner">Por definir</span>
+                    </div>
+                </div>
+
+                <div class="bracket-match final-match">
+                    <strong>🏆 GRAN FINAL</strong>
+                    <div class="match-details">
+                        Ganador SF1 vs. Ganador SF2<br>
+                        <strong style="color: #a0aec0; font-size: 0.95em;">CAMPEÓN:</strong> <span class="bracket-winner">Por definir</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEWS SECTION -->
+            <div class="news-section" id="news-section">
+                <div class="section-title">📰 Cobertura del Torneo</div>
+                <p style="color: #a0aec0; margin-bottom: 20px;">Haz clic en cada noticia para expandir y ver los detalles completos.</p>
+
+                <div class="news-item">
+                    <div class="news-header" onclick="toggleNews(this)">
+                        <span class="news-title">🎾 Partido B2: Hildebrando Borg 8-6 Oscar Nadal</span>
+                        <span class="news-toggle">▼</span>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-body">
+                            <strong>¡Borg se impone! Victoria ajustada tras partido reñido</strong><br><br>
+                            Hildebrando Borg venció 8-6 a Oscar Nadal en un partido lleno de emoción en el Grupo B. Borg dominó el inicio llegando a estar 7-2 arriba, pero Nadal reaccionó con carácter y se recuperó para poner el marcador 7-6. El servicio de Borg fue clave en los momentos decisivos para cerrar el encuentro. Gran esfuerzo de ambos competidores en la cancha.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-header" onclick="toggleNews(this)">
+                        <span class="news-title">🏆 GRUPO B CERRADO: Clasificación Final</span>
+                        <span class="news-toggle">▼</span>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-body">
+                            <strong>Grupo B: ¡Definición por diferencia!</strong><br><br>
+                            El Grupo B finalizó con un triple empate en partidos ganados (todos 1-1), decidido por diferencia de games:<br><br>
+                            <strong>Tabla Final:</strong><br>
+                            🥇 1º Oscar Nadal (1-1, +5 diferencia)<br>
+                            🥈 2º Hildebrando Borg (1-1, -2 diferencia)<br>
+                            ❌ 3º Lucho Sampras (1-1, -3 diferencia) - ELIMINADO<br><br>
+                            <strong>Resultados del grupo:</strong><br>
+                            • B1: Oscar Nadal 8-1 Lucho Sampras<br>
+                            • B2: Hildebrando Borg 8-6 Oscar Nadal<br>
+                            • B3: Lucho Sampras 8-4 Hildebrando Borg
+                        </div>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-header" onclick="toggleNews(this)">
+                        <span class="news-title">⏸️ Partido A4: Edwin Federer vs Yesid Djokovic - SUSPENDIDO 2-1</span>
+                        <span class="news-toggle">▼</span>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-body">
+                            <strong>¡Batalla intensa! Federer-Djokovic se suspende</strong><br><br>
+                            El partido A4 entre Edwin Federer y Yesid Djokovic tuvo que suspenderse por tiempo con Federer adelante 2-1. Un encuentro extremadamente reñido donde cada game se ha definido tras múltiples deuces, demostrando el altísimo nivel de ambos competidores. La tensión en la cancha ha sido palpable punto a punto.<br><br>
+                            <strong>Declaraciones de Federer:</strong> "No soy el favorito del torneo, solo estoy jugando mi mejor tenis", declaró tras la suspensión, desmintiendo las voces que lo señalan como la raqueta favorita del CompensarCurie Open.<br><br>
+                            El partido continuará en la siguiente jornada. Aún quedan varios encuentros pendientes por disputarse para cerrar el Grupo A. ¡La clasificación está completamente abierta!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer">
+                🎾 ¡Que ganen los mejores! 🎾<br>
+                CompensarCurie Open 2025
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleNews(header) {
+            const content = header.nextElementSibling;
+            const toggle = header.querySelector('.news-toggle');
+            
+            content.classList.toggle('active');
+            
+            if (content.classList.contains('active')) {
+                toggle.textContent = '▲';
+            } else {
+                toggle.textContent = '▼';
+            }
+        }
+    </script>
+</body>
+</html>🎾 Partido A1: Edwin Federer 8-0 María Paula Navratilova</span>
+                        <span class="news-toggle">▼</span>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-body">
+                            <strong>¡Federer brilló en el debut!</strong><br><br>
+                            Edwin Federer inauguró el CompensarCurie Open 2025 con una actuación impecable, venciendo 8-0 a María Paula Navratilova. Federer se consolidó como uno de los favoritos del torneo con un nivel extraordinario. María Paula peleó cada punto pero no pudo frenar a su rival.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-header" onclick="toggleNews(this)">
+                        <span class="news-title">🎾 Partido B1: Oscar Nadal 8-1 Lucho Sampras</span>
+                        <span class="news-toggle">▼</span>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-body">
+                            <strong>¡Nadal imparable! Domina en el debut del Grupo B</strong><br><br>
+                            Oscar Nadal dejó una declaración de intenciones en el Grupo B, venciendo 8-1 a Lucho Sampras en el Partido B1. Nadal mostró un tenis sólido y contundente desde el primer game. Sampras se vio afectado por venir de una pausa y estar fuera de ritmo, pero se mostró optimista sobre su próximo enfrentamiento contra Borg.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-header" onclick="toggleNews(this)">
+                        <span class="news-title">⏸️ Partido B3: Lucho Sampras vs Hildebrando Borg - SUSPENDIDO 7-4</span>
+                        <span class="news-toggle">▼</span>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-body">
+                            <strong>¡Batalla épica! Sampras-Borg se suspende por tiempo</strong><br><br>
+                            El partido B3 entre Lucho Sampras e Hildebrando Borg tuvo que suspenderse tras extenderse más de lo planeado. Un encuentro reñidísimo donde Sampras lidera 7-4 y está 40-40 en el game actual con servicio a favor. El partido ha sido intenso, con Sampras aprovechando magistralmente las esquinas de la cancha.<br><br>
+                            Hildebrando Borg aprovechó para enviar saludos a su madre y a su padre durante la pausa del partido.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-header" onclick="toggleNews(this)">
+                        <span class="news-title">🎾 Partido B3 FINAL: Lucho Sampras 8-4 Hildebrando Borg</span>
+                        <span class="news-toggle">▼</span>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-body">
+                            <strong>¡Sampras cierra el partido! Victoria tras la reanudación</strong><br><br>
+                            Lucho Sampras completó su victoria 8-4 sobre Hildebrando Borg en el partido que se había suspendido en la jornada anterior. Tras retomar en 7-4 y 40-40, Sampras cerró el encuentro con un servicio contundente. Borg entró frío a la cancha tras la pausa y no pudo revertir la situación. Gran actuación de Sampras que suma su primera victoria en el Grupo B.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-header" onclick="toggleNews(this)">
+                        <span class="news-title">🎾 Partido A2: Yesid Djokovic 8-3 John McEnroe</span>
+                        <span class="news-toggle">▼</span>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-body">
+                            <strong>¡Djokovic domina! Victoria en el Grupo A</strong><br><br>
+                            Yesid Djokovic se impuso 8-3 ante John McEnroe en el Partido A2 del Grupo A. McEnroe venía de una pausa por lesión y la falta de ritmo le afectó durante el encuentro, aunque demostró ser un gran competidor en cada punto. Ahora McEnroe deberá sumar puntos cruciales en sus próximos enfrentamientos contra Navratilova y Federer para mantener vivas sus opciones de clasificación.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-header" onclick="toggleNews(this)">
+                        <span class="news-title">
