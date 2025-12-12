@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎾 CompensarCurie Open 2025</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2a2a 100%);
+            color: #ffffff;
+            padding: 20px 10px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .tournament-logo {
+            font-size: 5em;
+            margin-bottom: 10px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .header h1 {
+            font-size: 2.2em;
+            font-weight: 800;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            letter-spacing: -0.5px;
+            color: #1a1a1a;
+        }
+
+        .header .subtitle {
+            font-size: 1em;
+            font-weight: 600;
+            opacity: 0.95;
+            letter-spacing: 1px;
+            color: #1a1a1a;
+        }
+
+        .tournament-complete {
+            background: rgba(0,0,0,0.2);
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+
+        /* CHAMPION BANNER */
+        .champion-banner {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 237, 78, 0.1) 100%);
+            border: 3px solid #ffd700;
+            border-radius: 16px;
+            padding: 30px;
+            margin: 30px 20px;
+            text-align: center;
+        }
+
+        .champion-label {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #ffd700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .champion-name {
+            font-size: 2.5em;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .champion-stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2em;
+            font-weight: 900;
+            color: #ffd700;
+        }
+
+        .stat-label {
+            font-size: 0.85em;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        /* PODIUM */
+        .podium-section {
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .podium-title {
+            font-size: 1.8em;
+            font-weight: 800;
+            color: #ffd700;
+            text-align: center;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .podium {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .podium-place {
+            text-align: center;
+            padding: 25px 20px;
+            border-radius: 12px;
+            min-width: 180px;
+        }
+
+        .first-place {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 215, 0, 0.1) 100%);
+            border: 2px solid #ffd700;
+            order: 2;
+        }
+
+        .second-place {
+            background: linear-gradient(135deg, rgba(192, 192, 192, 0.2) 0%, rgba(192, 192, 192, 0.1) 100%);
+            border: 2px solid #c0c0c0;
+            order: 1;
+        }
+
+        .third-place {
+            background: linear-gradient(135deg, rgba(205, 127, 50, 0.2) 0%, rgba(205, 127, 50, 0.1) 100%);
+            border: 2px solid #cd7f32;
+            order: 3;
+        }
+
+        .medal {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+        }
+
+        .place-name {
+            font-size: 1.3em;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .place-record {
+            font-size: 0.9em;
+            color: #999;
+            margin: 3px 0;
+        }
+
+        /* CONTENT AREA */
+        .content {
+            padding: 30px 20px;
+        }
+
+        /* SECTION HEADERS */
+        .section-title {
+            font-size: 1.6em;
+            font-weight: 700;
+            margin: 30px 0 20px 0;
+            padding-left: 15px;
+            border-left: 5px solid #52b788;
+            color: #ffffff;
+        }
+
+        .subsection-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin: 25px 0 15px 0;
+            color: #a0aec0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .subsection-title::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #52b788;
+            border-radius: 50%;
+        }
+
+        /* TABLES */
+        .fixture-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .fixture-table th {
+            background: linear-gradient(135deg, #52b788 0%, #2d6a4f 100%);
+            color: white;
+            padding: 15px 10px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.95em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .fixture-table td {
+            padding: 15px 10px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+        }
+
+        .fixture-table tr:hover {
+            background: rgba(82, 183, 136, 0.1);
+        }
+
+        .completed {
+            background: rgba(82, 183, 136, 0.15);
+        }
+
+        .winner {
+            font-weight: 700;
+            color: #52b788;
+        }
+
+        /* NEWS SECTION */
+        .news-section {
+            margin-top: 40px;
+        }
+
+        .news-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .news-header {
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .news-header:hover {
+            background: rgba(82, 183, 136, 0.1);
+        }
+
+        .news-title {
+            font-weight: 700;
+            color: #ffffff;
+            font-size: 1em;
+        }
+
+        .news-toggle {
+            color: #52b788;
+            font-size: 1.2em;
+            font-weight: 700;
+        }
+
+        .news-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .news-content.active {
+            max-height: 1000px;
+        }
+
+        .news-body {
+            padding: 20px;
+            line-height: 1.7;
+            color: #d0d0d0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.02);
+            font-weight: 600;
+            color: #a0aec0;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <div class="tournament-logo">🏆</div>
+                <h1>CompensarCurie Open 2025</h1>
+                <div class="subtitle">Torneo Amistoso de Tenis</div>
+                <div class="tournament-complete">🎉 TORNEO FINALIZADO 🎉</div>
+            </div>
+        </div>
+
+        <!-- CHAMPION BANNER -->
+        <div class="champion-banner">
+            <div class="champion-label">⭐ CAMPEÓN INVICTO ⭐</div>
+            <div class="champion-name">EDWIN FEDERER</div>
+            <div class="champion-stats">
+                <div class="stat-item">
+                    <div class="stat-value">5-0</div>
+                    <div class="stat-label">Récord</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">40-10</div>
+                    <div class="stat-label">Games</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">+30</div>
+                    <div class="stat-label">Diferencia</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PODIUM -->
+        <div class="podium-section">
+            <div class="podium-title">🏅 Podio Final</div>
+            
+            <div class="podium">
+                <div class="podium-place second-place">
+                    <div class="medal">🥈</div>
+                    <div class="place-name">Oscar Nadal</div>
+                    <div class="place-record">Subcampeón</div>
+                    <div class="place-record">3-1 (29-18 games)</div>
+                    <div class="place-record">1° Grupo B</div>
+                </div>
+                
+                <div class="podium-place first-place">
+                    <div class="medal">🥇</div>
+                    <div class="place-name">Edwin Federer</div>
+                    <div class="place-record">Campeón</div>
+                    <div class="place-record">5-0 (40-10 games)</div>
+                    <div class="place-record">1° Grupo A</div>
+                </div>
+                
+                <div class="podium-place third-place">
+                    <div class="medal">🥉</div>
+                    <div class="place-name">Hildebrando Borg</div>
+                    <div class="place-record">Tercer Lugar</div>
+                    <div class="place-record">3-2 (34-32 games)</div>
+                    <div class="place-record">2° Grupo B</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- GRUPO A -->
+            <div class="section-title">🟢 Grupo A - Resultados Finales</div>
+            
+            <table class="fixture-table">
+                <thead>
+                    <tr>
+                        <th>Partido</th>
+                        <th>Jugador 1</th>
+                        <th>Marcador</th>
+                        <th>Jugador 2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="completed">
+                        <td><strong>A1</strong></td>
+                        <td class="winner">Edwin Federer</td>
+                        <td><strong>8-0</strong></td>
+                        <td>María Paula Navratilova</td>
+                    </tr>
+                    <tr class="completed">
+                        <td><strong>A2</strong></td>
+                        <td class="winner">Yesid Djokovic</td>
+                        <td><strong>8-3</strong></td>
+                        <td>John McEnroe</td>
+                    </tr>
+                    <tr class="completed">
+                        <td><strong>A3</strong></td>
+                        <td style="color: #ff6b35;">John McEnroe</td>
+                        <td colspan="2" style="color: #ff6b35;"><strong>vs María Paula Navratilova - SUSPENDIDO (Lesión McEnroe)</strong></td>
+                    </tr>
+                    <tr class="completed">
+                        <td><strong>A4</strong></td>
+                        <td class="winner">Edwin Federer</td>
+                        <td><strong>8-2</strong></td>
+                        <td>Yesid Djokovic</td>
+                    </tr>
+                    <tr class="completed">
+                        <td><strong>A5</strong></td>
+                        <td class="winner">Yesid Djokovic</td>
+                        <td><strong>8-1</strong></td>
+                        <td>María Paula Navratilova</td>
+                    </tr>
+                    <tr class="completed">
+                        <td><strong>A6</strong></td>
+                        <td class="winner">Edwin Federer</td>
+                        <td><strong>8-0</strong></td>
+                        <td>John McEnroe</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="subsection-title">Clasificación Final Grupo A</div>
+            <table class="fixture-table">
+                <thead>
+                    <tr>
+                        <th>Pos</th>
+                        <th>Jugador</th>
+                        <th>PJ</th>
+                        <th>PG</th>
+                        <th>PP</th>
+                        <th>GF</th>
+                        <th>GC</th>
+                        <th>Dif</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="completed">
+                        <td>🥇</td>
+                        <td class="winner">Edwin Federer</td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>0</td>
+                        <td>24</td>
+                        <td>2</td>
+                        <td><strong>+22</strong></td>
+                    </tr>
+                    <tr class="completed">
+                        <td>🥈</td>
+                        <td class="winner">Yesid Djokovic</td>
+                        <td>3</td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>18</td>
+                        <td>11</td>
+                        <td>+7</td>
+                    </tr>
+                    <tr>
+                        <td>3º</td>
+                        <td>María Paula Navratilova</td>
+                        <td>2</td>
+                        <td>0</td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>16</td>
+                        <td>-15</td>
+                    </tr>
+                    <tr>
+                        <td>4º</td>
+                        <td>John McEnroe</td>
+                        <td>2</td>
+                        <td>0</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>16</td>
+                        <td>-13</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- GRUPO B -->
+            <div class="section-title">🟠 Grupo B - Resultados Finales</div>
+            
+            <table class="fixture-table">
+                <thead>
+                    <tr>
+                        <th>Partido</th>
+                        <th>Jugador 1</th>
+                        <th>Marcador</th>
+                        <th>Jugador 2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="completed">
+                        <td><strong>B1</strong></td>
+                        <td class="winner">Oscar Nadal</td>
+                        <td><strong>8-1</strong></td>
+                        <td>Lucho Sampras</td>
+                    </tr>
+                    <tr class="completed">
+                        <td><strong>B2</strong></td>
+                        <td class="winner">Hildebrando Borg</td>
+                        <td><strong>8-6</strong></td>
+                        <td>Oscar Nadal</td>
+                    </tr>
+                    <tr class="completed">
+                        <td><strong>B3</strong></td>
+                        <td class="winner">Lucho Sampras</td>
+                        <td><strong>8-4</strong></td>
+                        <td>Hildebrando Borg</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="subsection-title">Clasificación Final Grupo B</div>
+            <table class="fixture-table">
+                <thead>
+                    <tr>
+                        <th>Pos</th>
+                        <th>Jugador</th>
+                        <th>PJ</th>
+                        <th>PG</th>
+                        <th>PP</th>
+                        <th>GF</th>
+                        <th>GC</th>
+                        <th>Dif</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="completed">
+                        <td>🥇</td>
+                        <td class="winner">Oscar Nadal</td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>9</td>
+                        <td>7</td>
+                        <td><strong>+2</strong></td>
+                    </tr>
+                    <tr class="completed">
+                        <td>🥈</td>
+                        <td class="winner">Hildebrando Borg</td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>12</td>
+                        <td>14</td>
+                        <td>-2</td>
+                    </tr>
+                    <tr>
+                        <td>3º</td>
+                        <td>Lucho Sampras</td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>9</td>
+                        <td>9</td>
+                        <td>0</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- PLAYOFFS -->
+            <div class="section-title">🏆 Playoffs - Resultados Finales</div>
+            
+            <div class="subsection-title">Semifinales</div>
+            <table class="fixture-table">
+                <thead>
+                    <tr>
+                        <th>Partido</th>
+                        <th>Jugador 1</th>
+                        <th>Marcador</th>
+                        <th>Jugador 2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="completed">
+                        <td><strong>SF1</strong></td>
+                        <td class="winner">Oscar Nadal</td>
+                        <td><strong>8-5</strong></td>
+                        <td>Yesid Djokovic</td>
+                    </tr>
+                    <tr class="completed">
+                        <td><strong>SF2</strong></td>
+                        <td class="winner">Edwin Federer</td>
+                        <td><strong>8-4</strong></td>
+                        <td>Hildebrando Borg</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="subsection-title">Finales</div>
+            <table class="fixture-table">
+                <thead>
+                    <tr>
+                        <th>Partido</th>
+                        <th>Jugador 1</th>
+                        <th>Marcador</th>
+                        <th>Jugador 2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="completed">
+                        <td><strong>🥉 3er Lugar</strong></td>
+                        <td class="winner">Hildebrando Borg</td>
+                        <td><strong>9-7</strong></td>
+                        <td>Yesid Djokovic</td>
+                    </tr>
+                    <tr class="completed" style="background: rgba(255, 215, 0, 0.15);">
+                        <td><strong>🏆 FINAL</strong></td>
+                        <td class="winner" style="color: #ffd700;">Edwin Federer</td>
+                        <td><strong style="color: #ffd700;">8-4</strong></td>
+                        <td>Oscar Nadal</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- CLASIFICACIÓN GENERAL -->
+            <div class="section-title">📊 Clasificación General del Torneo</div>
+            <table class="fixture-table">
+                <thead>
+                    <tr>
+                        <th>Pos</th>
+                        <th>Jugador</th>
+                        <th>PJ</th>
+                        <th>PG</th>
+                        <th>PP</th>
+                        <th>GF</th>
+                        <th>GC</th>
+                        <th>Dif</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="completed" style="background: rgba(255, 215, 0, 0.15);">
+                        <td>🥇</td>
+                        <td class="winner" style="color: #ffd700;">Edwin Federer</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>0</td>
+                        <td>40</td>
+                        <td>10</td>
+                        <td><strong style="color: #ffd700;">+30</strong></td>
+                    </tr>
+                    <tr class="completed">
+                        <td>🥈</td>
+                        <td class="winner" style="color: #c0c0c0;">Oscar Nadal</td>
+                        <td>4</td>
+                        <td>3</td>
+                        <td>1</td>
+                        <td>29</td>
+                        <td>18</td>
+                        <td>+11</td>
+                    </tr>
+                    <tr class="completed">
+                        <td>🥉</td>
+                        <td class="winner" style="color: #cd7f32;">Hildebrando Borg</td>
+                        <td>5</td>
+                        <td>3</td>
+                        <td>2</td>
+                        <td>34</td>
+                        <td>32</td>
+                        <td>+2</td>
+                    </tr>
+                    <tr>
+                        <td>4º</td>
+                        <td>Yesid Djokovic</td>
+                        <td>5</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>26</td>
+                        <td>42</td>
+                        <td>-16</td>
+                    </tr>
+                    <tr>
+                        <td>5º</td>
+                        <td>Lucho Sampras</td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>9</td>
+                        <td>9</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>6º</td>
+                        <td>María Paula Navratilova</td>
+                        <td>2</td>
+                        <td>0</td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>16</td>
+                        <td>-15</td>
+                    </tr>
+                    <tr>
+                        <td>7º</td>
+                        <td>John McEnroe</td>
+                        <td>2</td>
+                        <td>0</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>16</td>
+                        <td>-13</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- NEWS SECTION -->
+            <div class="news-section" id="news-section">
+                <div class="section-title">📰 Cobertura Completa del Torneo</div>
+                <p style="color: #a0aec0; margin-bottom: 20px;">Haz clic en cada noticia para expandir y ver los detalles completos.</p>
+
+                <div class="news-item">
+                    <div class="news-header" onclick="toggleNews(this)">
+                        <span class="news-title">🏆 FINAL: Edwin Federer 8-4 Oscar Nadal - ¡FEDERER CAMPEÓN!</span>
+                        <span class="news-toggle">▼</span>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-body">
+                            <strong>¡EDWIN FEDERER ES EL CAMPEÓN DEL COMPENSARCURIE OPEN 2025!</strong><br><br>
+                            Edwin Federer coronó una actuación perfecta venciendo 8-4 a Oscar Nadal en la Gran Final. Con un récord invicto de 5-0 y una diferencia de +30 games (40-10), Federer demostró ser el mejor jugador del torneo de principio a fin.<br><br>
+                            <strong>Estadísticas del Campeón:</strong><br>
+                            • 5 victorias en 5 partidos<br>
+                            • 40 games a favor, 10 en contra<br>
+                            • Dos barridas perfectas 8-0<br>
+                            • Jugó bajo lluvia intensa sin perder nivel<br><br>
+                            Oscar Nadal peleó cada punto pero no pudo frenar al imparable Federer. ¡Felicidades al campeón invicto del CompensarCurie Open 2025! 🏆
+                        </div>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-header" onclick="toggleNews(this)">
+                        <span class="news-title">🥉 TERCER LUGAR: Hildebrando Borg 9-7 Yesid Djokovic</span>
+                        <span class="news-toggle">▼</span>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-body">
+                            <strong>¡Borg se lleva el bronce en partido épico!</strong><br><br>
+                            Hildebrando Borg venció 9-7 a Yesid Djokovic en un partido intenso por el tercer lugar. El encuentro se definió tras llegar 8-7 a favor de Borg, quien salvó match point y cerró el partido 9-7.<br><br>
+                            Un merecido tercer lugar para Borg, quien mostró gran carácter en todo el torneo. Djokovic se quedó con el cuarto puesto tras dos derrotas consecutivas en semifinales (vs Nadal) y tercer lugar (vs Borg).
+                        </div>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-header" onclick="toggleNews(this)">
+                        <span class="news-title">🎾 SEMIFINALES: Nadal 8-5 Djokovic y Federer 8-4 Borg</span>
+                        <span class="news-toggle">▼</span>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-body">
+                            <strong>Definidos los finalistas del CompensarCurie Open</strong><br><br>
+                            <strong>Semifinal 1:</strong> Oscar Nadal venció 8-5 a Yesid Djokovic en un partido que se definió en los últimos games. Nadal mantuvo su solidez para avanzar a la final.<br><br>
+                            <strong>Semifinal 2:</strong> Edwin Federer superó 8-4 a Hildebrando Borg, manteniendo su récord perfecto y confirmándose como favorito para el título.<br><br>
+                            La final quedó definida: Federer (1° Grupo A) vs Nadal (1° Grupo B).
+                        </div>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-header" onclick="toggleNews(this)">
+                        <span class="news-title">🌧️ JORNADA ÉPICA: Federer arrasa bajo la lluvia</span>
+                        <span class="news-toggle">▼</span>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-body">
+                            <strong>Noche difícil con lluvia intensa - Federer domina sin piedad</strong><br><br>
+                            <strong>Resultados Grupo A:</strong><br>
+                            • Edwin Federer 8-2 Yesid Djokovic<br>
+                            • Edwin Federer 8-0 John McEnroe<br>
+                            • Yesid Djokovic 8-1 María Paula Navratilova<br>
+                            • McEnroe vs Navratilova - SUSPENDIDO por lesión de McEnroe<br><br>
+                            Los partidos de Federer se jugaron bajo intensa lluvia en condiciones extremadamente difíciles. A pesar del clima adverso, Federer mantuvo un nivel extraordinario, completando el Grupo A con récord perfecto.<br><br>
+                            <strong>John McEnroe</strong> sufrió una lesión y no pudo completar su partido contra Navratilova. Estará fuera de las canchas las próximas dos semanas.<br><br>
+                            <strong>Hildebrando Borg</strong> declaró: <em>"Espero ansioso el próximo partido"</em> antes de su semifinal contra Federer.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-header" onclick="toggleNews(this)">
+                        <span class="news-title">🏆 GRUPO B CERRADO: Triple empate decidido por diferencia</span>
+                        <span class="news-toggle">▼</span>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-body">
+                            <strong>Clasificación definida por games de diferencia</strong><br><br>
+                            El Grupo B finalizó con triple empate en partidos ganados (todos 1-1), decidido por diferencia de games:<br><br>
+                            <strong>Tabla Final:</strong><br>
+                            🥇 1º Oscar Nadal (1-1, +2 diferencia) - CLASIFICADO<br>
+                            🥈 2º Hildebrando Borg (1-1, -2 diferencia) - CLASIFICADO<br>
+                            ❌ 3º Lucho Sampras (1-1, 0 diferencia) - ELIMINADO<br><br>
+                            <strong>Resultados del grupo:</strong><br>
+                            • B1: Oscar Nadal 8-1 Lucho Sampras<br>
+                            • B2: Hildebrando Borg 8-6 Oscar Nadal<br>
+                            • B3: Lucho Sampras 8-4 Hildebrando Borg
+                        </div>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-header" onclick="toggleNews(this)">
+                        <span class="news-title">🎾 Partido B2: Hildebrando Borg 8-6 Oscar Nadal</span>
+                        <span class="news-toggle">▼</span>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-body">
+                            <strong>¡Borg se impone! Victoria ajustada tras partido reñido</strong><br><br>
+                            Hildebrando Borg venció 8-6 a Oscar Nadal en un partido lleno de emoción en el Grupo B. Borg dominó el inicio llegando a estar 7-2 arriba, pero Nadal reaccionó con carácter y se recuperó para poner el marcador 7-6. El servicio de Borg fue clave en los momentos decisivos para cerrar el encuentro. Gran esfuerzo de ambos competidores en la cancha.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-header" onclick="toggleNews(this)">
+                        <span class="news-title">🎾 Partido B3 FINAL: Lucho Sampras 8-4 Hildebrando Borg</span>
+                        <span class="news-toggle">▼</span>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-body">
+                            <strong>¡Sampras cierra el partido! Victoria tras la reanudación</strong><br><br>
+                            Lucho Sampras completó su victoria 8-4 sobre Hildebrando Borg en el partido que se había suspendido en la jornada anterior. Tras retomar en 7-4 y 40-40, Sampras cerró el encuentro con un servicio contundente. Borg entró frío a la cancha tras la pausa y no pudo revertir la situación. Gran actuación de Sampras que suma su primera victoria en el Grupo B.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-header" onclick="toggleNews(this)">
+                        <span class="news-title">🎾 Partido A2: Yesid Djokovic 8-3 John McEnroe</span>
+                        <span class="news-toggle">▼</span>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-body">
+                            <strong>¡Djokovic domina! Victoria en el Grupo A</strong><br><br>
+                            Yesid Djokovic se impuso 8-3 ante John McEnroe en el Partido A2 del Grupo A. McEnroe venía de una pausa por lesión y la falta de ritmo le afectó durante el encuentro, aunque demostró ser un gran competidor en cada punto.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-header" onclick="toggleNews(this)">
+                        <span class="news-title">🎾 Partido A1: Edwin Federer 8-0 María Paula Navratilova</span>
+                        <span class="news-toggle">▼</span>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-body">
+                            <strong>¡Federer brilló en el debut!</strong><br><br>
+                            Edwin Federer inauguró el CompensarCurie Open 2025 con una actuación impecable, venciendo 8-0 a María Paula Navratilova. Federer se consolidó desde el inicio como uno de los favoritos del torneo con un nivel extraordinario.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-header" onclick="toggleNews(this)">
+                        <span class="news-title">🎾 Partido B1: Oscar Nadal 8-1 Lucho Sampras</span>
+                        <span class="news-toggle">▼</span>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-body">
+                            <strong>¡Nadal imparable! Domina en el debut del Grupo B</strong><br><br>
+                            Oscar Nadal dejó una declaración de intenciones en el Grupo B, venciendo 8-1 a Lucho Sampras en el Partido B1. Nadal mostró un tenis sólido y contundente desde el primer game. Sampras se vio afectado por venir de una pausa y estar fuera de ritmo.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer">
+                🏆 ¡Felicidades a todos los participantes! 🏆<br>
+                CompensarCurie Open 2025 - Torneo Finalizado
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleNews(header) {
+            const content = header.nextElementSibling;
+            const toggle = header.querySelector('.news-toggle');
+            
+            content.classList.toggle('active');
+            
+            if (content.classList.contains('active')) {
+                toggle.textContent = '▲';
+            } else {
+                toggle.textContent = '▼';
+            }
+        }
+    </script>
+</body>
+</html>
